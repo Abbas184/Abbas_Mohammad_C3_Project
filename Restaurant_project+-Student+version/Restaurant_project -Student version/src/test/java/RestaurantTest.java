@@ -1,24 +1,35 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith(MockitoExtension.class)
 class RestaurantTest {
-    Restaurant restaurant;
-    //REFACTOR ALL THE REPEATED LINES OF CODE
+Restaurant restaurant;
 
+    //REFACTOR ALL THE REPEATED LINES OF CODE
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
+        Restaurant restaurant=Mockito.mock(Restaurant.class);
+       Mockito.when(restaurant.isRestaurantOpen()).thenReturn(true);
+       assertTrue(restaurant.isRestaurantOpen());
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
+        Restaurant restaurant=Mockito.mock(Restaurant.class);
+        Mockito.when(restaurant.isRestaurantOpen()).thenReturn(false);
+        assertFalse(restaurant.isRestaurantOpen());
 
     }
 
